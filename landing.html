@@ -1,0 +1,1117 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0a0a0a" />
+<title>FundedGoal — Pass Your Prop Firm Challenge Or Your Money Back</title>
+<meta name="description" content="Professional traders pass your prop firm challenge for you — manually, no bots — at the lowest price on the market with a 96% success rate." />
+<meta property="og:title" content="FundedGoal — Pass Your Prop Firm Challenge" />
+<meta property="og:description" content="Professional traders pass your prop firm challenge for you — manually, no bots — 96% success rate. Money-back guarantee." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg-2: #111111;
+    --bg-3: #161616;
+    --line: rgba(255,255,255,0.08);
+    --line-strong: rgba(255,255,255,0.14);
+    --text: #f5f5f5;
+    --text-dim: rgba(245,245,245,0.62);
+    --text-dimmer: rgba(245,245,245,0.42);
+    --gold: #f5b027;
+    --gold-soft: #ffd472;
+    --gold-deep: #c98b14;
+    --success: #34d399;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+  img, svg { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+  /* Background grain + grid */
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 3px 3px;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.6;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ===== Navbar ===== */
+  .nav {
+    position: sticky; top: 0;
+    z-index: 50;
+    background: rgba(10,10,10,0.7);
+    backdrop-filter: saturate(140%) blur(14px);
+    -webkit-backdrop-filter: saturate(140%) blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .logo {
+    font-weight: 800; font-size: 22px; letter-spacing: -0.02em;
+  }
+  .logo .gold { color: var(--gold); }
+  .nav-links {
+    display: none; gap: 32px; align-items: center;
+    font-size: 14.5px; color: var(--text-dim); font-weight: 500;
+  }
+  .nav-links a { transition: color .2s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    display: none;
+    background: var(--gold); color: #181100;
+    padding: 10px 18px; border-radius: 999px;
+    font-weight: 700; font-size: 14px;
+    transition: transform .15s, box-shadow .2s;
+  }
+  .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 8px 22px rgba(245,176,39,0.28); }
+  .menu-toggle {
+    width: 42px; height: 42px;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 1px solid var(--line); border-radius: 12px;
+  }
+  @media (min-width: 880px) {
+    .nav-links, .nav-cta { display: inline-flex; }
+    .menu-toggle { display: none; }
+  }
+
+  /* Mobile menu */
+  .mobile-menu {
+    position: fixed; inset: 68px 0 0 0;
+    background: rgba(10,10,10,0.96);
+    backdrop-filter: blur(16px);
+    z-index: 49;
+    padding: 32px 24px;
+    transform: translateY(-100%);
+    transition: transform .3s ease;
+    visibility: hidden;
+  }
+  .mobile-menu.open { transform: translateY(0); visibility: visible; }
+  .mobile-menu a {
+    display: block;
+    padding: 18px 0;
+    font-size: 18px; font-weight: 600;
+    border-bottom: 1px solid var(--line);
+  }
+  .mobile-menu .nav-cta {
+    display: block; text-align: center;
+    margin-top: 24px;
+  }
+
+  /* ===== Hero ===== */
+  .hero {
+    position: relative;
+    padding: 64px 0 80px;
+    overflow: hidden;
+    text-align: center;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(60% 50% at 50% 0%, rgba(245,176,39,0.10), transparent 70%),
+      radial-gradient(40% 40% at 50% 100%, rgba(245,176,39,0.05), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .hero-chart {
+    position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
+    width: 140%; max-width: 1400px; opacity: 0.18;
+    pointer-events: none; z-index: 0;
+  }
+  .hero .container { position: relative; z-index: 2; }
+
+  .rating-pill {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 10px 18px;
+    border: 1px solid var(--line-strong);
+    background: rgba(255,255,255,0.03);
+    border-radius: 999px;
+    font-size: 13.5px; font-weight: 500;
+    color: var(--text-dim);
+    margin-bottom: 32px;
+  }
+  .stars { color: var(--gold); letter-spacing: 1px; font-size: 14px; }
+
+  h1.hero-title {
+    font-size: clamp(40px, 9vw, 88px);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    font-weight: 800;
+    margin: 0 0 28px;
+  }
+  h1.hero-title .accent {
+    color: var(--gold);
+    display: block;
+  }
+  h1.hero-title .dash { color: var(--gold); }
+
+  .hero-sub {
+    font-size: clamp(16px, 2.2vw, 19px);
+    color: var(--text-dim);
+    max-width: 640px;
+    margin: 0 auto 40px;
+    line-height: 1.55;
+  }
+  .hero-sub strong { color: var(--text); font-weight: 600; }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--gold);
+    color: #181100;
+    padding: 18px 36px;
+    border-radius: 14px;
+    font-weight: 700; font-size: 16.5px;
+    transition: transform .15s ease, box-shadow .2s ease;
+    box-shadow: 0 10px 30px rgba(245,176,39,0.22);
+    width: 100%; max-width: 460px;
+    justify-content: center;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 38px rgba(245,176,39,0.35); }
+  .btn-primary svg { transition: transform .2s; }
+  .btn-primary:hover svg { transform: translateX(4px); }
+
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 10px;
+    border: 1px solid var(--line-strong);
+    padding: 16px 28px;
+    border-radius: 14px;
+    font-weight: 600; font-size: 15px;
+    color: var(--text);
+    transition: background .2s, border-color .2s;
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.22); }
+
+  .hero-trust {
+    margin-top: 28px;
+    display: flex; flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px 28px;
+    font-size: 14px; color: var(--text-dim);
+  }
+  .hero-trust span { display: inline-flex; align-items: center; gap: 8px; }
+  .hero-trust .check { color: var(--gold); }
+
+  /* ===== Section base ===== */
+  section { position: relative; }
+  .section { padding: 90px 0; }
+  .section-tight { padding: 64px 0; }
+  .eyebrow {
+    display: inline-block;
+    font-size: 12.5px; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+  h2.section-title {
+    font-size: clamp(30px, 5.2vw, 50px);
+    line-height: 1.08; letter-spacing: -0.025em;
+    font-weight: 800;
+    margin: 0 0 18px;
+  }
+  .section-lead {
+    font-size: 17px; color: var(--text-dim);
+    max-width: 620px; margin: 0 0 56px;
+    line-height: 1.55;
+  }
+  .section-header { text-align: center; }
+  .section-header .section-lead { margin-left: auto; margin-right: auto; }
+
+  /* ===== Problem section ===== */
+  .problem {
+    background: linear-gradient(180deg, transparent, rgba(245,176,39,0.025) 50%, transparent);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .problem-grid {
+    display: grid; grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  @media (min-width: 720px) { .problem-grid { grid-template-columns: repeat(3, 1fr); } }
+  .pain-card {
+    padding: 28px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+    transition: border-color .25s, transform .25s;
+  }
+  .pain-card:hover { border-color: rgba(245,176,39,0.3); transform: translateY(-4px); }
+  .pain-card .icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: rgba(245,176,39,0.12);
+    color: var(--gold);
+    display: inline-flex; align-items: center; justify-content: center;
+    margin-bottom: 18px;
+  }
+  .pain-card h3 { font-size: 19px; margin: 0 0 10px; font-weight: 700; letter-spacing: -0.01em; }
+  .pain-card p { margin: 0; color: var(--text-dim); font-size: 15px; line-height: 1.55; }
+
+  /* ===== How it works ===== */
+  .steps {
+    display: grid; gap: 24px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 880px) { .steps { grid-template-columns: repeat(3, 1fr); gap: 32px; } }
+  .step {
+    position: relative;
+    padding: 36px 28px 32px;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background: var(--bg-2);
+  }
+  .step-num {
+    position: absolute; top: -18px; left: 28px;
+    width: 44px; height: 44px; border-radius: 12px;
+    background: var(--gold); color: #181100;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 17px;
+    box-shadow: 0 8px 20px rgba(245,176,39,0.25);
+  }
+  .step h3 {
+    font-size: 21px; margin: 8px 0 12px;
+    font-weight: 700; letter-spacing: -0.015em;
+  }
+  .step p { margin: 0; color: var(--text-dim); font-size: 15px; line-height: 1.6; }
+
+  /* ===== Why us ===== */
+  .why-grid {
+    display: grid; gap: 20px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 720px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1000px) { .why-grid { grid-template-columns: repeat(4, 1fr); } }
+  .why-card {
+    padding: 28px;
+    border-radius: 18px;
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    text-align: left;
+  }
+  .why-card .num {
+    font-size: 42px; font-weight: 800;
+    color: var(--gold);
+    line-height: 1; letter-spacing: -0.03em;
+    margin-bottom: 14px;
+  }
+  .why-card h4 { font-size: 17px; margin: 0 0 8px; font-weight: 700; }
+  .why-card p { margin: 0; font-size: 14.5px; color: var(--text-dim); line-height: 1.55; }
+
+  /* ===== Mid CTA ===== */
+  .mid-cta {
+    padding: 64px 0;
+    text-align: center;
+  }
+  .mid-cta-inner {
+    background:
+      radial-gradient(80% 100% at 50% 0%, rgba(245,176,39,0.18), transparent 70%),
+      linear-gradient(180deg, var(--bg-3), var(--bg-2));
+    border: 1px solid var(--line-strong);
+    border-radius: 28px;
+    padding: 56px 28px;
+    position: relative; overflow: hidden;
+  }
+  .mid-cta-inner h2 {
+    font-size: clamp(26px, 4vw, 38px);
+    line-height: 1.15; letter-spacing: -0.02em;
+    margin: 0 0 14px; font-weight: 800;
+  }
+  .mid-cta-inner p {
+    color: var(--text-dim); font-size: 16px;
+    margin: 0 auto 28px; max-width: 520px;
+  }
+
+  /* ===== Pricing ===== */
+  .pricing-grid {
+    display: grid; gap: 20px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 720px) { .pricing-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1000px) { .pricing-grid { grid-template-columns: repeat(3, 1fr); } }
+  .price-card {
+    padding: 32px 28px;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background: var(--bg-2);
+    display: flex; flex-direction: column;
+    transition: border-color .25s, transform .25s;
+  }
+  .price-card:hover { border-color: rgba(245,176,39,0.35); transform: translateY(-4px); }
+  .price-card.featured {
+    border-color: var(--gold);
+    background: linear-gradient(180deg, rgba(245,176,39,0.08), var(--bg-2));
+    position: relative;
+  }
+  .price-card.featured::before {
+    content: "MOST POPULAR";
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--gold); color: #181100;
+    font-size: 11px; font-weight: 800; letter-spacing: 0.1em;
+    padding: 6px 14px; border-radius: 999px;
+  }
+  .price-card .tier {
+    font-size: 13px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-dim);
+    margin-bottom: 8px;
+  }
+  .price-card .amount {
+    font-size: 38px; font-weight: 800; letter-spacing: -0.03em;
+    line-height: 1; margin-bottom: 4px;
+  }
+  .price-card .amount .currency { color: var(--gold); }
+  .price-card .acct {
+    font-size: 14px; color: var(--text-dim);
+    margin-bottom: 24px;
+  }
+  .price-card ul {
+    list-style: none; padding: 0; margin: 0 0 28px;
+    display: flex; flex-direction: column; gap: 12px;
+    font-size: 14.5px;
+  }
+  .price-card li {
+    display: flex; align-items: flex-start; gap: 10px;
+    color: var(--text-dim);
+  }
+  .price-card li svg { flex-shrink: 0; color: var(--gold); margin-top: 2px; }
+  .price-card li strong { color: var(--text); font-weight: 600; }
+  .price-card .btn {
+    margin-top: auto;
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 14px 20px;
+    border-radius: 12px;
+    border: 1px solid var(--line-strong);
+    font-weight: 700; font-size: 14.5px;
+    transition: background .2s, border-color .2s;
+  }
+  .price-card .btn:hover { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.25); }
+  .price-card.featured .btn {
+    background: var(--gold); color: #181100; border-color: var(--gold);
+  }
+  .price-card.featured .btn:hover { background: var(--gold-soft); }
+
+  /* ===== Testimonials ===== */
+  .testimonials-grid {
+    display: grid; gap: 20px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 720px) { .testimonials-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1000px) { .testimonials-grid { grid-template-columns: repeat(3, 1fr); } }
+  .quote {
+    padding: 28px;
+    border: 1px solid var(--line);
+    background: var(--bg-2);
+    border-radius: 20px;
+    display: flex; flex-direction: column;
+  }
+  .quote .stars { font-size: 13px; margin-bottom: 14px; }
+  .quote p {
+    font-size: 15.5px; line-height: 1.6;
+    margin: 0 0 22px;
+  }
+  .quote-author {
+    display: flex; align-items: center; gap: 12px;
+    margin-top: auto;
+  }
+  .avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+    color: #181100; font-weight: 800;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 15px;
+  }
+  .quote-author .name { font-weight: 700; font-size: 14.5px; }
+  .quote-author .meta { font-size: 13px; color: var(--text-dim); }
+
+  /* ===== Guarantee ===== */
+  .guarantee {
+    background: linear-gradient(180deg, transparent, rgba(245,176,39,0.04));
+    border-top: 1px solid var(--line);
+  }
+  .guarantee-inner {
+    display: grid; gap: 36px;
+    grid-template-columns: 1fr;
+    align-items: center;
+  }
+  @media (min-width: 880px) { .guarantee-inner { grid-template-columns: 1fr 1fr; gap: 64px; } }
+  .shield {
+    width: 84px; height: 84px;
+    border-radius: 22px;
+    background: rgba(245,176,39,0.12);
+    color: var(--gold);
+    display: inline-flex; align-items: center; justify-content: center;
+    margin-bottom: 22px;
+  }
+  .guarantee ul {
+    list-style: none; padding: 0; margin: 24px 0 0;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .guarantee li {
+    display: flex; align-items: flex-start; gap: 12px;
+    color: var(--text-dim); font-size: 15.5px;
+  }
+  .guarantee li svg { flex-shrink: 0; color: var(--success); margin-top: 3px; }
+  .guarantee-visual {
+    aspect-ratio: 1/1;
+    border-radius: 28px;
+    background:
+      radial-gradient(circle at 50% 40%, rgba(245,176,39,0.22), transparent 60%),
+      linear-gradient(180deg, var(--bg-3), var(--bg-2));
+    border: 1px solid var(--line-strong);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .guarantee-visual .big-percent {
+    font-size: clamp(80px, 14vw, 160px);
+    font-weight: 800; letter-spacing: -0.05em;
+    background: linear-gradient(180deg, var(--gold-soft), var(--gold-deep));
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+  }
+  .guarantee-visual .label {
+    position: absolute; bottom: 32px; left: 0; right: 0;
+    text-align: center;
+    font-size: 14px; font-weight: 600;
+    color: var(--text-dim); letter-spacing: 0.08em; text-transform: uppercase;
+  }
+
+  /* ===== FAQ ===== */
+  .faq { max-width: 820px; margin: 0 auto; }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+  }
+  .faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 22px 0;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 20px;
+    font-size: 16.5px; font-weight: 600;
+    transition: color .2s;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary:hover { color: var(--gold); }
+  .faq-item .plus {
+    width: 28px; height: 28px; border-radius: 50%;
+    border: 1px solid var(--line-strong);
+    display: inline-flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: transform .25s, background .25s, color .25s;
+  }
+  .faq-item[open] .plus { transform: rotate(45deg); background: var(--gold); color: #181100; border-color: var(--gold); }
+  .faq-item .answer {
+    padding: 0 0 22px;
+    color: var(--text-dim);
+    font-size: 15.5px; line-height: 1.65;
+    max-width: 700px;
+  }
+
+  /* ===== Final CTA ===== */
+  .final-cta {
+    padding: 100px 0;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .final-cta::before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(50% 60% at 50% 50%, rgba(245,176,39,0.14), transparent 70%);
+    pointer-events: none;
+  }
+  .final-cta h2 {
+    font-size: clamp(34px, 6vw, 60px);
+    line-height: 1.05; letter-spacing: -0.03em;
+    font-weight: 800; margin: 0 0 20px;
+  }
+  .final-cta h2 .accent { color: var(--gold); }
+  .final-cta p {
+    color: var(--text-dim); font-size: 17px;
+    max-width: 540px; margin: 0 auto 40px;
+  }
+
+  /* ===== Footer ===== */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 56px 0 120px;
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+  @media (min-width: 720px) { footer { padding-bottom: 56px; } }
+  .footer-grid {
+    display: grid; gap: 36px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 720px) { .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; } }
+  .footer-brand { max-width: 360px; }
+  .footer-brand p { margin: 14px 0 0; line-height: 1.6; }
+  .footer h5 {
+    font-size: 12.5px; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--text);
+    margin: 0 0 16px;
+  }
+  .footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  .footer a:hover { color: var(--gold); }
+  .footer-bottom {
+    margin-top: 48px; padding-top: 28px;
+    border-top: 1px solid var(--line);
+    display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between;
+    font-size: 13px;
+  }
+
+  /* ===== Sticky mobile CTA ===== */
+  .sticky-cta {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    z-index: 40;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(14px);
+    border-top: 1px solid var(--line);
+  }
+  .sticky-cta .btn-primary {
+    padding: 14px 24px;
+    font-size: 15px;
+    box-shadow: none;
+  }
+  @media (min-width: 720px) { .sticky-cta { display: none; } }
+
+  /* ===== Reveal animation ===== */
+  .reveal {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+
+</head>
+<body>
+
+<!-- ===================== NAVBAR ===================== -->
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="#" class="logo"><span class="gold">Funded</span>Goal</a>
+    <nav class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a href="https://t.me/fundedgoal" target="_blank" rel="noopener" class="nav-cta">Contact on Telegram</a>
+    <button class="menu-toggle" id="menuBtn" aria-label="Open menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#how">How it works</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#testimonials">Reviews</a>
+  <a href="#faq">FAQ</a>
+  <a href="https://t.me/fundedgoal" target="_blank" rel="noopener" class="nav-cta">Contact on Telegram</a>
+</div>
+
+<!-- ===================== HERO ===================== -->
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <svg class="hero-chart" viewBox="0 0 1200 300" fill="none" aria-hidden="true">
+    <g stroke="#f5b027" stroke-width="2" opacity="0.8">
+      <!-- Simple candlestick silhouette -->
+      <g fill="#f5b027">
+        <rect x="40"  y="180" width="14" height="60"/>
+        <rect x="80"  y="160" width="14" height="80"/>
+        <rect x="120" y="140" width="14" height="100"/>
+        <rect x="160" y="170" width="14" height="50"/>
+        <rect x="200" y="130" width="14" height="110"/>
+        <rect x="240" y="120" width="14" height="90"/>
+        <rect x="280" y="150" width="14" height="70"/>
+        <rect x="320" y="100" width="14" height="120"/>
+        <rect x="360" y="110" width="14" height="100"/>
+        <rect x="400" y="90"  width="14" height="130"/>
+        <rect x="440" y="120" width="14" height="80"/>
+        <rect x="480" y="80"  width="14" height="140"/>
+        <rect x="520" y="100" width="14" height="110"/>
+        <rect x="560" y="70"  width="14" height="150"/>
+        <rect x="600" y="90"  width="14" height="120"/>
+        <rect x="640" y="60"  width="14" height="160"/>
+        <rect x="680" y="80"  width="14" height="130"/>
+        <rect x="720" y="50"  width="14" height="170"/>
+        <rect x="760" y="70"  width="14" height="140"/>
+        <rect x="800" y="40"  width="14" height="180"/>
+        <rect x="840" y="60"  width="14" height="150"/>
+        <rect x="880" y="30"  width="14" height="190"/>
+        <rect x="920" y="50"  width="14" height="160"/>
+        <rect x="960" y="20"  width="14" height="200"/>
+        <rect x="1000" y="40" width="14" height="170"/>
+        <rect x="1040" y="10" width="14" height="210"/>
+        <rect x="1080" y="30" width="14" height="180"/>
+        <rect x="1120" y="0"  width="14" height="220"/>
+      </g>
+      <line x1="47"  y1="170" x2="47"  y2="250"/>
+      <line x1="87"  y1="150" x2="87"  y2="250"/>
+      <line x1="127" y1="130" x2="127" y2="250"/>
+    </g>
+  </svg>
+
+  <div class="container">
+    <div class="rating-pill reveal">
+      <span class="stars">★★★★★</span>
+      <span>4.8/5 from 100+ verified traders</span>
+    </div>
+
+```
+<h1 class="hero-title reveal">
+  Pass Your Prop Firm Challenge
+  <span class="accent"><span class="dash">—</span> Or Your Money Back</span>
+</h1>
+
+<p class="hero-sub reveal">
+  Professional traders pass your challenge for you — manually, no bots — at the
+  <strong>lowest price on the market</strong> with a <strong>96% success rate</strong>.
+</p>
+
+<a href="https://t.me/fundedgoal" target="_blank" rel="noopener" class="btn-primary reveal">
+  Contact Us on Telegram
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+</a>
+
+<div class="hero-trust reveal">
+  <span><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Money-back guarantee</span>
+  <span><svg style="color:var(--gold)" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Manual trading only</span>
+  <span><svg style="color:var(--gold)" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Reach us 24/7 on Telegram</span>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ===================== PROBLEM ===================== -->
+
+<section class="section problem">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow reveal">The honest truth</span>
+      <h2 class="section-title reveal">Most traders never get funded.</h2>
+      <p class="section-lead reveal">
+        Prop firm challenges are designed to fail. Tight drawdowns, strict rules, and emotional pressure burn through accounts and account fees alike — month after month.
+      </p>
+    </div>
+
+```
+<div class="problem-grid">
+  <div class="pain-card reveal">
+    <div class="icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    </div>
+    <h3>You keep blowing accounts</h3>
+    <p>One bad day, one revenge trade, one news spike — and another $500 fee vanishes. The cycle never ends.</p>
+  </div>
+  <div class="pain-card reveal">
+    <div class="icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    </div>
+    <h3>You don't have the time</h3>
+    <p>Sitting in front of charts for weeks to hit a profit target isn't realistic when you have a job, a family, or a life.</p>
+  </div>
+  <div class="pain-card reveal">
+    <div class="icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+    </div>
+    <h3>EAs and bots get banned</h3>
+    <p>Automated services break firm rules and risk your funded account. We trade everything manually — the way prop firms expect.</p>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ===================== HOW IT WORKS ===================== -->
+
+<section class="section" id="how">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow reveal">How it works</span>
+      <h2 class="section-title reveal">From signup to funded in 3 steps.</h2>
+      <p class="section-lead reveal">No accounts to share blindly, no shady setup. A clean, simple process from start to payout.</p>
+    </div>
+
+```
+<div class="steps">
+  <div class="step reveal">
+    <div class="step-num">1</div>
+    <h3>Pick your challenge</h3>
+    <p>Choose the prop firm and account size you want. Tell us the rules, deadline, and target — we handle the rest.</p>
+  </div>
+  <div class="step reveal">
+    <div class="step-num">2</div>
+    <h3>We pass it for you</h3>
+    <p>A professional trader passes your challenge manually using strict risk management. No bots, no copy trades, no rule violations.</p>
+  </div>
+  <div class="step reveal">
+    <div class="step-num">3</div>
+    <h3>You get the funded account</h3>
+    <p>Once you receive your funded credentials, the account is 100% yours. Trade it your way, or keep working with us.</p>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ===================== WHY US ===================== -->
+
+<section class="section" style="border-top: 1px solid var(--line);">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow reveal">Why FundedGoal</span>
+      <h2 class="section-title reveal">Built by traders, for traders.</h2>
+      <p class="section-lead reveal">No marketing tricks. Just numbers that hold up.</p>
+    </div>
+
+```
+<div class="why-grid">
+  <div class="why-card reveal">
+    <div class="num">96%</div>
+    <h4>Pass rate</h4>
+    <p>Independently tracked across all challenges completed in the last 12 months.</p>
+  </div>
+  <div class="why-card reveal">
+    <div class="num">100+</div>
+    <h4>Funded traders</h4>
+    <p>Real clients now trading live funded accounts thanks to our service.</p>
+  </div>
+  <div class="why-card reveal">
+    <div class="num">0</div>
+    <h4>Bots used</h4>
+    <p>Every trade is placed manually by an experienced trader — never an EA.</p>
+  </div>
+  <div class="why-card reveal">
+    <div class="num">24/7</div>
+    <h4>Telegram support</h4>
+    <p>Talk to a real human any time of day, before, during, and after your challenge.</p>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ===================== MID CTA 1 ===================== -->
+
+<section class="mid-cta">
+  <div class="container">
+    <div class="mid-cta-inner reveal">
+      <h2>Stop burning challenge fees.</h2>
+      <p>Every failed challenge is money in the prop firm's pocket. Let us pass it once and be done.</p>
+      <a href="https://t.me/fundedgoal" target="_blank" rel="noopener" class="btn-primary">
+        Talk to us on Telegram
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PRICING ===================== -->
+
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow reveal">Pricing</span>
+      <h2 class="section-title reveal">Lowest prices on the market.</h2>
+      <p class="section-lead reveal">Pick the challenge size you want passed. All prices include manual trading, full account management, and our money-back guarantee.</p>
+    </div>
+
+```
+<div class="pricing-grid">
+  <div class="price-card reveal">
+    <div class="tier">Starter</div>
+    <div class="amount"><span class="currency">$</span>149</div>
+    <div class="acct">$10,000 account</div>
+    <ul>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Any major prop firm</li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 100% manual trading</li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Money-back guarantee</li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 24/7 Telegram updates</li>
+    </ul>
+    <a href="https://t.me/fundedgoal" target="_blank" rel="noopener" class="btn">Get started</a>
+  </div>
+
+  <div class="price-card featured reveal">
+    <div class="tier">Pro</div>
+    <div class="amount"><span class="currency">$</span>299</div>
+    <div class="acct">$50,000 account</div>
+    <ul>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <strong>Everything in Starter</strong></li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Priority trader assignment</li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Faster completion time</li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Post-funded coaching call</li>
+    </ul>
+    <a href="https://t.me/fundedgoal" target="_blank" rel="noopener" class="btn">Get started</a>
+  </div>
+
+  <div class="price-card reveal">
+    <div class="tier">Elite</div>
+    <div class="amount"><span class="currency">$</span>549</div>
+    <div class="acct">$100,000+ account</div>
+    <ul>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <strong>Everything in Pro</strong></li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Dedicated senior trader</li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Custom risk strategy</li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Ongoing account management option</li>
+    </ul>
+    <a href="https://t.me/fundedgoal" target="_blank" rel="noopener" class="btn">Get started</a>
+  </div>
+</div>
+
+<p style="text-align:center; margin-top:32px; color: var(--text-dimmer); font-size: 14px;">
+  Need a different size or a specific firm? <a href="https://t.me/fundedgoal" target="_blank" rel="noopener" style="color: var(--gold); font-weight: 600;">Message us on Telegram →</a>
+</p>
+```
+
+  </div>
+</section>
+
+<!-- ===================== TESTIMONIALS ===================== -->
+
+<section class="section" id="testimonials" style="border-top: 1px solid var(--line);">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow reveal">Reviews</span>
+      <h2 class="section-title reveal">100+ traders. One verdict.</h2>
+      <p class="section-lead reveal">Real people. Real funded accounts. Real reviews from our Telegram community.</p>
+    </div>
+
+```
+<div class="testimonials-grid">
+  <div class="quote reveal">
+    <div class="stars">★★★★★</div>
+    <p>"Burned through three challenges on my own before finding these guys. Passed a $50k account in 8 days. Money was the best I've ever spent in trading."</p>
+    <div class="quote-author">
+      <div class="avatar">M</div>
+      <div><div class="name">Marcus T.</div><div class="meta">$50k funded · FTMO</div></div>
+    </div>
+  </div>
+  <div class="quote reveal">
+    <div class="stars">★★★★★</div>
+    <p>"Honest pricing, constant Telegram updates, no nonsense. Got my funded account and pulled my first payout last month. Highly recommend."</p>
+    <div class="quote-author">
+      <div class="avatar">S</div>
+      <div><div class="name">Sofia K.</div><div class="meta">$100k funded · The Funded Trader</div></div>
+    </div>
+  </div>
+  <div class="quote reveal">
+    <div class="stars">★★★★★</div>
+    <p>"What sold me was the manual trading. No EAs, no risk of getting my account banned later. Passed in 11 days, all rules respected. Top service."</p>
+    <div class="quote-author">
+      <div class="avatar">J</div>
+      <div><div class="name">Jonas W.</div><div class="meta">$25k funded · MyFundedFX</div></div>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ===================== MID CTA 2 ===================== -->
+
+<section class="mid-cta">
+  <div class="container">
+    <div class="mid-cta-inner reveal">
+      <h2>Join 100+ funded traders.</h2>
+      <p>Your funded account is one conversation away. Reach out on Telegram and we'll get started today.</p>
+      <a href="https://t.me/fundedgoal" target="_blank" rel="noopener" class="btn-primary">
+        Get funded
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GUARANTEE ===================== -->
+
+<section class="section guarantee">
+  <div class="container">
+    <div class="guarantee-inner">
+      <div class="reveal">
+        <div class="shield">
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        </div>
+        <span class="eyebrow">Our promise</span>
+        <h2 class="section-title">Pass or pay nothing.</h2>
+        <p style="color: var(--text-dim); font-size: 16px; max-width: 480px;">
+          If we don't pass your challenge under the agreed terms, you get a full refund. No conditions, no fine-print games.
+        </p>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 100% refund if challenge fails</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> All trading rules strictly followed</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Transparent communication every day</li>
+        </ul>
+      </div>
+      <div class="guarantee-visual reveal">
+        <div class="big-percent">96%</div>
+        <div class="label">Verified pass rate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+
+<section class="section" id="faq" style="border-top: 1px solid var(--line);">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow reveal">FAQ</span>
+      <h2 class="section-title reveal">Questions, answered.</h2>
+      <p class="section-lead reveal">Anything we missed? Ping us on Telegram — we usually reply in minutes.</p>
+    </div>
+
+```
+<div class="faq">
+  <details class="faq-item reveal">
+    <summary>Is this legal and within prop firm rules?<span class="plus">+</span></summary>
+    <div class="answer">Most major prop firms allow account management as long as no automated tools or copy-trading services are used. We trade 100% manually with strict risk management, exactly as the firm expects. Once funded, the account is yours.</div>
+  </details>
+  <details class="faq-item reveal">
+    <summary>How long does it take to pass a challenge?<span class="plus">+</span></summary>
+    <div class="answer">Typically between 5 and 15 trading days, depending on account size and firm rules. We never rush trades — risk management always comes first.</div>
+  </details>
+  <details class="faq-item reveal">
+    <summary>Which prop firms do you work with?<span class="plus">+</span></summary>
+    <div class="answer">All major prop firms including FTMO, The Funded Trader, MyFundedFX, FundedNext, Topstep, and more. If you're not sure your firm is supported, just ask us on Telegram.</div>
+  </details>
+  <details class="faq-item reveal">
+    <summary>What happens after I'm funded?<span class="plus">+</span></summary>
+    <div class="answer">The funded account is 100% yours. You can trade it however you like and keep all payouts. If you prefer to keep working with us, ongoing account management is available on our Elite plan.</div>
+  </details>
+  <details class="faq-item reveal">
+    <summary>How does the money-back guarantee work?<span class="plus">+</span></summary>
+    <div class="answer">If your challenge fails under our management, we refund you 100% of what you paid us. No questions, no conditions, no waiting weeks. We refund directly back to your original payment method.</div>
+  </details>
+  <details class="faq-item reveal">
+    <summary>How do I get started?<span class="plus">+</span></summary>
+    <div class="answer">Message us on Telegram at <a style="color: var(--gold); font-weight: 600;" href="https://t.me/fundedgoal" target="_blank" rel="noopener">@fundedgoal</a>. Tell us which firm and account size, and we'll guide you through the rest in minutes.</div>
+  </details>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ===================== FINAL CTA ===================== -->
+
+<section class="final-cta">
+  <div class="container reveal">
+    <h2>Ready to get <span class="accent">funded</span>?</h2>
+    <p>Stop fighting challenges alone. Let a professional trader pass it for you — with a money-back guarantee.</p>
+    <a href="https://t.me/fundedgoal" target="_blank" rel="noopener" class="btn-primary">
+      Contact Us on Telegram
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo"><span style="color: var(--gold);">Funded</span>Goal</div>
+        <p>Professional traders pass your prop firm challenge manually, with a 96% success rate and a money-back guarantee.</p>
+      </div>
+      <div>
+        <h5>Navigate</h5>
+        <ul>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="https://t.me/fundedgoal" target="_blank" rel="noopener">Telegram: @fundedgoal</a></li>
+          <li><a href="https://t.me/fundedgoal" target="_blank" rel="noopener">24/7 support</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© <span id="year"></span> FundedGoal. All rights reserved.</div>
+      <div>Trading involves risk. Past performance does not guarantee future results.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== STICKY MOBILE CTA ===================== -->
+
+<div class="sticky-cta">
+  <a href="https://t.me/fundedgoal" target="_blank" rel="noopener" class="btn-primary">
+    Contact Us on Telegram
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+  </a>
+</div>
+
+<script>
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Mobile menu
+  const btn = document.getElementById('menuBtn');
+  const menu = document.getElementById('mobileMenu');
+  btn.addEventListener('click', () => menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
